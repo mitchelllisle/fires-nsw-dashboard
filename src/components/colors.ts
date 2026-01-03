@@ -1,23 +1,23 @@
 // Color palette for NSW Bushfires Dashboard
-// Inspired by EIA dashboard color scheme
+// Warm, earthy palette inspired by fire and nature
 
 export const colors = {
   // Primary data colors
-  wildfire: "#ff8ab7",      // Pink for wildfires
-  prescribedBurn: "#a463f2", // Purple for prescribed burns
+  wildfire: "#B4436C",      // Magenta/burgundy for wildfires
+  prescribedBurn: "#F78154", // Orange/coral for prescribed burns
   
   // Sequential color schemes for choropleth/heatmaps
   heatmap: {
     scheme: "YlOrRd",
-    low: "#ffffcc",
-    mid: "#fd8d3c", 
-    high: "#800026"
+    low: "#F2C14E",
+    mid: "#F78154", 
+    high: "#B4436C"
   },
   
   // Accent colors
-  accent1: "#a463f2",  // Purple
-  accent2: "#ff8ab7",  // Pink
-  accent3: "#6cc5b0",  // Teal
+  accent1: "#F78154",  // Orange
+  accent2: "#B4436C",  // Magenta
+  accent3: "#F2C14E",  // Gold/yellow
   
   // Neutral/UI colors
   background: "currentColor",
