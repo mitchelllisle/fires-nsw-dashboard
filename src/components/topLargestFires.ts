@@ -54,7 +54,7 @@ export function topLargestFires(
       Plot.barX(topFires, {
         x: "area",
         y: "label",
-        fill: colors.wildfire,
+        fill: colors.accent2,
         sort: {y: "-x"},
         tip: true,
         channels: {

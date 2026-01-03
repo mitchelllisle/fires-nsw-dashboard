@@ -1,6 +1,6 @@
 import * as d3 from "npm:d3";
 import * as Plot from "npm:@observablehq/plot";
-import {colors} from "./colors.js";
+import {colors, generateSequentialScale} from "./colors.js";
 
 interface FireData {
   StartDate?: string;
@@ -64,7 +64,7 @@ export function seasonalHeatmap(
     },
     color: {
       type: "threshold",
-      range: ["white", "#ffe0ec", "#ffb3d1", "#ff8ab7", "#ff5c9d", "#e63d82"],
+      range: generateSequentialScale(colors.wildfire),
       domain: [1, 10, 50, 100, 200, 400],
       legend: true,
       label: "Fires per month"

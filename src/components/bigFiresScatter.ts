@@ -108,7 +108,7 @@ export function bigFiresScatter(
         dy: -90,
         fontSize: 11,
         fontWeight: "bold",
-        fill: colors.accent1,
+        fill: colors.accent2,
         lineWidth: 18
       }),
       Plot.text(periodicLargest, {

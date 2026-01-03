@@ -138,7 +138,7 @@ export function regionalHotspots(
       Plot.barX(locationData, {
         x: "count",
         y: "location",
-        fill: colors.accent1,
+        fill: colors.accent2,
         sort: {y: "-x"},
         tip: true
       }),

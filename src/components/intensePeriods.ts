@@ -89,7 +89,7 @@ export function intensePeriods(
       Plot.barY(periodData, {
         x: "period",
         y: "totalArea",
-        fill: (d: any) => top3Periods.has(d.period) ? colors.accent1 : "#f5d9a8",
+        fill: (d: any) => top3Periods.has(d.period) ? colors.accent1 : colors.accent3Lighter,
         inset: 5,
         tip: true
       }),
@@ -99,7 +99,7 @@ export function intensePeriods(
         x: "period",
         y: "totalArea",
         r: 5,
-        fill: colors.wildfire,
+        fill: colors.accent2,
         stroke: "white",
         strokeWidth: 2
       }),
@@ -110,7 +110,7 @@ export function intensePeriods(
         dy: -20,
         fontSize: 13,
         fontWeight: "bold",
-        fill: colors.wildfire
+        fill: colors.accent2
       }),
       Plot.text(top3, {
         x: "period",

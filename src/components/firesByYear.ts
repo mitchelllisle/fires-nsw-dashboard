@@ -126,7 +126,7 @@ export function firesByYear(
       Plot.lineY(wildfireYearlyData, {
         x: "year",
         y: "count",
-        stroke: "#ff8ab7",
+        stroke: colorScales.fireType.range[0],
         strokeWidth: 2.5,
         curve: "natural",
         tip: true
@@ -134,13 +134,13 @@ export function firesByYear(
       Plot.dot(wildfireYearlyData, {
         x: "year",
         y: "count",
-        fill: "#ff8ab7",
+        fill: colorScales.fireType.range[0],
         r: 3
       }),
       Plot.lineY(prescribedYearlyData, {
         x: "year",
         y: "count",
-        stroke: "#a463f2",
+        stroke: colorScales.fireType.range[1],
         strokeWidth: 2.5,
         curve: "natural",
         tip: true
@@ -148,7 +148,7 @@ export function firesByYear(
       Plot.dot(prescribedYearlyData, {
         x: "year",
         y: "count",
-        fill: "#a463f2",
+        fill: colorScales.fireType.range[1],
         r: 3
       }),
       Plot.ruleY([0])

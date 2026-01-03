@@ -15,6 +15,7 @@ import {regionalHotspots} from "./components/regionalHotspots.js";
 import {bigFiresScatter} from "./components/bigFiresScatter.js";
 import {topLargestFires} from "./components/topLargestFires.js";
 import {intensePeriods} from "./components/intensePeriods.js";
+import {colors} from "./components/colors.js";
 ```
 
 ```js
@@ -73,13 +74,20 @@ const filteredFires = fires.filter(d => {
 });
 ```
 
-<p style="max-width: none;">Bushfires are an intrinsic part of the Australian landscape, but their scale and intensity have reached unprecedented levels in recent decades. Since 1970, NSW has recorded over <strong>${totalFires.toLocaleString("en-US")} fire events</strong>, burning more than <span style="color: #F78154; font-weight: 600;">${d3.format(".2s")(totalAreaHa)} hectares</span>. The 2019-2020 Black Summer marked a catastrophic turning point: the <strong>Gospers Mountain</strong> fire became the <em>largest from a single ignition point</em> in Australian history at <span style="color: #B4436C; font-weight: 600;">512,626 hectares</span>, generating fire-generated thunderstorms and merging with five other fires into a megablaze exceeding one million hectares.</p>
+```js
+html`<p style="max-width: none;">Bushfires are an intrinsic part of the Australian landscape, but their scale and intensity have reached unprecedented levels in recent decades. Since 1970, NSW has recorded over <strong>${totalFires.toLocaleString("en-US")} fire events</strong>, burning more than <span style="color: ${colors.accent1}; font-weight: 600;">${d3.format(".2s")(totalAreaHa)} hectares</span>. The 2019-2020 Black Summer marked a catastrophic turning point: the <strong>Gospers Mountain</strong> fire became the <em>largest from a single ignition point</em> in Australian history at <span style="color: ${colors.wildfire}; font-weight: 600;">512,626 hectares</span>, generating fire-generated thunderstorms and merging with five other fires into a megablaze exceeding one million hectares.</p>`
+```
 
-<p style="max-width: none;">The data reveals a troubling pattern: <strong>the most destructive periods have all occurred since 2000</strong>. The 2015-2019 period saw the most area burnt, driven by Black Summer's trio of mega-fires. The 2000-2004 period ranks second with the 2003 Australian Alps fires burning <span style="color: #F2C14E; font-weight: 600;">1.73 million hectares</span> during Australia's worst drought in 103 years.</p>
+```js
+html`<p style="max-width: none;">The data reveals a troubling pattern: <strong>the most destructive periods have all occurred since 2000</strong>. The 2015-2019 period saw the most area burnt, driven by Black Summer's trio of mega-fires. The 2000-2004 period ranks second with the 2003 Australian Alps fires burning <span style="color: ${colors.accent3}; font-weight: 600;">1.73 million hectares</span> during Australia's worst drought in 103 years.</p>`
+```
 
-<p style="max-width: none; margin-bottom: 2rem;">As climate change intensifies, fire seasons <strong>start earlier, last longer, and burn with unprecedented ferocity</strong>. Understanding this historical data isn't just about looking back—it's about preparing for an increasingly fire-prone future.</p>
+```js
+html`<p style="max-width: none; margin-bottom: 2rem;">As climate change intensifies, fire seasons <strong>start earlier, last longer, and burn with unprecedented ferocity</strong>. Understanding this historical data isn't just about looking back—it's about preparing for an increasingly fire-prone future.</p>`
+```
 
-<div class="grid grid-cols-4">
+```js
+html`<div class="grid grid-cols-4">
   <div class="card">
     <h2 style="font-weight: 700;">Total Fires</h2>
     <span class="big">${totalFires.toLocaleString("en-US")}</span>
@@ -89,14 +97,15 @@ const filteredFires = fires.filter(d => {
     <span class="big">${d3.format(".2s")(totalAreaHa)}</span> hectares
   </div>
   <div class="card">
-    <h2 style="font-weight: 700; color: #ff8ab7;">Wildfires</h2>
-    <span class="big" style="color: #ff8ab7;">${wildfires.length.toLocaleString("en-US")}</span>
+    <h2 style="font-weight: 700; color: ${colors.wildfire};">Wildfires</h2>
+    <span class="big" style="color: ${colors.wildfire};">${wildfires.length.toLocaleString("en-US")}</span>
   </div>
   <div class="card">
-    <h2 style="font-weight: 700; color: #a463f2;">Prescribed Burns</h2>
-    <span class="big" style="color: #a463f2;">${prescribedBurns.length.toLocaleString("en-US")}</span>
+    <h2 style="font-weight: 700; color: ${colors.prescribedBurn};">Prescribed Burns</h2>
+    <span class="big" style="color: ${colors.prescribedBurn};">${prescribedBurns.length.toLocaleString("en-US")}</span>
   </div>
-</div>
+</div>`
+```
 
 <div class="grid grid-cols-4">
   <div class="card grid-colspan-2 grid-rowspan-2">

@@ -40,11 +40,16 @@ src/
 ## Design Principles
 
 ### Color Palette
-- Primary colors defined in `src/components/colors.ts`:
-  - Purple (#a463f2) for prescribed burns and accents
-  - Coral/Pink (#ff8ab7) for wildfires and highlights
-  - Light purple (#d4b5f7) for secondary elements
-- Use `colors` and `colorScales` exports consistently across components
+- **ALL colors defined centrally in `src/components/colors.ts`**
+- Primary colors:
+  - `colors.wildfire` - For wildfires and wildfire-related data
+  - `colors.prescribedBurn` - For prescribed burns and prescribed burn data
+  - `colors.accent1`, `colors.accent2`, `colors.accent3` - Accent colors
+- Lighter variants available: `wildfireLighter`, `prescribedBurnLighter`, `accent3Lighter`
+- **NEVER hardcode hex colors** - always import and use from `colors` object
+- Use `colorScales.fireType` for consistent fire type color mapping
+- Use `generateSequentialScale(targetColor)` for heatmaps and gradients
+- To change the entire dashboard palette, edit only `colors.ts`
 
 ### Chart Titles & Content
 - All chart titles should be **questions** that the visualization answers
