@@ -1,0 +1,19 @@
+{
+  "name": "fires-nsw-dashboard",
+  "version": "1.0.0",
+  "description": "NSW Bushfires Dashboard using Observable Framework",
+  "type": "module",
+  "scripts": {
+    "dev": "observable preview",
+    "build": "observable build",
+    "deploy": "observable deploy"
+  },
+  "devDependencies": {
+    "@observablehq/framework": "latest"
+  },
+  "dependencies": {
+    "arquero": "^5.4.1",
+    "d3": "^7.9.0",
+    "d3-dsv": "^3.0.1"
+  }
+}
