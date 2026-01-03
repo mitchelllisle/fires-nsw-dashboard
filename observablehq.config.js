@@ -1,5 +1,6 @@
 // See https://observablehq.com/framework/config for documentation.
 export default {
+  base: "/fires-nsw-dashboard",
   pages: [
     {name: "Overview", path: "/index"},
   ],
