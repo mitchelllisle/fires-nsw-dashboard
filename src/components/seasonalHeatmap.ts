@@ -1,6 +1,6 @@
 import * as d3 from "npm:d3";
 import * as Plot from "npm:@observablehq/plot";
-import {colors} from "./colors.ts";
+import {colors} from "./colors.js";
 
 interface FireData {
   StartDate?: string;
