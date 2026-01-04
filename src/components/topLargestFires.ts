@@ -26,7 +26,7 @@ const fireResearch: Record<string, FireResearchData> = {
     homes: 90,
     injuries: null,
     cause: "Lightning strike in inaccessible bushland",
-    summary: "Largest fire from a single ignition point in Australian history. Generated pyrocumulonimbus clouds and merged with 5 other fires into a megablaze exceeding 1 million hectares. Threatened Sydney's northern suburbs."
+    summary: "Started by a single lightning strike but grew significantly (130,000+ ha) due to escaped backburning operations. Generated pyrocumulonimbus clouds and merged with 5 other fires into a megablaze exceeding 1 million hectares. Threatened Sydney's northern suburbs."
   },
   "Currowan 2 (2019)": {
     deaths: 3,

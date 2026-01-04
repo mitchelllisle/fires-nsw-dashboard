@@ -75,7 +75,7 @@ const filteredFires = fires.filter(d => {
 ```
 
 ```js
-html`<p style="max-width: none;">Bushfires are an intrinsic part of the Australian landscape, but their scale and intensity have reached unprecedented levels in recent decades. Since 1970, NSW has recorded over <strong>${totalFires.toLocaleString("en-US")} fire events</strong>, burning more than <span style="color: ${colors.accent1}; font-weight: 600;">${d3.format(".2s")(totalAreaHa)} hectares</span>. The 2019-2020 Black Summer marked a catastrophic turning point: the <strong>Gospers Mountain</strong> fire became the <em>largest from a single ignition point</em> in Australian history at <span style="color: ${colors.wildfire}; font-weight: 600;">512,626 hectares</span>, generating fire-generated thunderstorms and merging with five other fires into a megablaze exceeding one million hectares.</p>`
+html`<p style="max-width: none;">Bushfires are an intrinsic part of the Australian landscape, but their scale and intensity have reached unprecedented levels in recent decades. Since 1970, NSW has recorded over <strong>${totalFires.toLocaleString("en-US")} fire events</strong>, burning more than <span style="color: ${colors.accent1}; font-weight: 600;">${d3.format(".2s")(totalAreaHa)} hectares</span>. The 2019-2020 Black Summer marked a catastrophic turning point: the <strong>Gospers Mountain</strong> fire, started by a single lightning strike, ultimately burned <span style="color: ${colors.wildfire}; font-weight: 600;">512,626 hectares</span> (including significant area from escaped backburning operations), generating fire-generated thunderstorms and merging with five other fires into a megablaze exceeding one million hectares.</p>`
 ```
 
 ```js
@@ -83,7 +83,7 @@ html`<p style="max-width: none;">The human toll of these fires is devastating. T
 ```
 
 ```js
-html`<p style="max-width: none;">The data reveals a troubling pattern: <strong>the most destructive periods have all occurred since 2000</strong>. The 2015-2019 period saw the most area burnt, driven by Black Summer's trio of mega-fires. The 2000-2004 period ranks second with the 2003 Australian Alps fires burning <span style="color: ${colors.accent3}; font-weight: 600;">1.73 million hectares</span> during Australia's worst drought in 103 years.</p>`
+html`<p style="max-width: none;">The data reveals a troubling pattern: <strong>the most destructive periods have all occurred since 2000</strong>. The 2015-2020 period saw the most area burnt, driven by Black Summer's trio of mega-fires (2019-2020). The 2000-2004 period ranks second with the 2003 Australian Alps fires burning <span style="color: ${colors.accent3}; font-weight: 600;">1.73 million hectares</span> during Australia's worst drought in 103 years.</p>`
 ```
 
 ```js
@@ -118,7 +118,7 @@ html`<div class="grid grid-cols-4">
 <div class="grid grid-cols-4">
   <div class="card grid-colspan-2 grid-rowspan-2">
     <h2>Where Do Fires Occur Across NSW?</h2>
-    <h3>${filteredFires.length.toLocaleString("en-US")} fire events in ${selectedYear}. Fires cluster heavily along the coastal ranges where eucalypt forests meet urban development.</h3>
+    <h3>Fires cluster heavily along the coastal ranges where eucalypt forests meet urban development. ${selectedYear} recorded ${filteredFires.length.toLocaleString("en-US")} fire events.</h3>
     <figure style="max-width: none;">
       <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 0.5rem;">
         <h1 style="margin: 0.25rem 0;">${selectedYear}</h1>
@@ -138,7 +138,7 @@ html`<div class="grid grid-cols-4">
   </div>
   <div class="card grid-colspan-2">
     <h2>Which Periods Were Most Destructive?</h2>
-    <h3>2015-2019 saw the most area burnt in any 5-year period, driven by the catastrophic Black Summer fires. The 2000-2004 period ranks second due to severe drought conditions.</h3>
+    <h3>2015-2020 saw the most area burnt in any 5-year period, driven by the catastrophic Black Summer fires (2019-2020). The 2000-2004 period ranks second due to severe drought conditions.</h3>
     ${resize((width) => intensePeriods(fires, {width}))}
   </div>
 </div>
@@ -151,7 +151,7 @@ html`<div class="grid grid-cols-4">
   </div>
   <div class="card grid-colspan-2">
     <h2>Which Areas Experience the Most Fires?</h2>
-    <h3>The Blue Mountains and Central Coast dominate fire frequency records. These regions combine dense bushland, dry conditions, and proximity to populated areas.</h3>
+    <h3>Fires concentrate in regions combining dense bushland, dry conditions, and proximity to populated areas. The Blue Mountains and Central Coast are among the most fire-prone.</h3>
     ${resize((width) => regionalHotspots(fires, nswSuburbs, {width}))}
   </div>
 </div>
@@ -164,7 +164,7 @@ html`<div class="grid grid-cols-4">
   </div>
   <div class="card">
     <h2>When Do Mega-Fires Happen?</h2>
-    <h3>Only 87 fires since 1970 have exceeded 50,000 hectares. Most occur in summer (Dec-Feb) when temperatures peak and fuel is driest. The worst fires exhibit extreme behavior: fire tornadoes, 60-meter flame heights, and runs of 80+ kilometers in a single day.</h3>
+    <h3>Only 87 fires since 1970 have exceeded 50,000 hectares. Most occur in summer (Dec-Feb) when temperatures peak and fuel is driest. The worst fires have exhibited extreme behaviors including fire tornadoes (2003), 60-meter flame heights (2003), and runs exceeding 80 kilometers in a single day (2019).</h3>
     ${resize((width) => bigFiresScatter(fires, {width}))}
   </div>
 </div>
@@ -175,4 +175,14 @@ html`<div class="grid grid-cols-4">
     <h3>The top 10 fires by area reveal catastrophic human impacts. Dot size reflects combined severity from casualties, homes destroyed, area, and injuries. Nearly all sparked by lightning in remote bushland during extreme drought.</h3>
     ${topLargestFires(fires, {width: 530, nswSuburbs})}
   </div>
+</div>
+
+<div class="note" style="max-width: none;">
+
+## Data Sources & Disclaimer
+
+This dashboard is built for **educational purposes** to explore patterns in NSW fire history. Every effort has been made to research and verify information from official sources, historical records, and inquiries. However, it should not be considered a definitive historical record.
+
+**Data Source:** [NSW DPIE Fire History - Wildfires and Prescribed Burns](https://datasets.seed.nsw.gov.au/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6) dataset. **Limitations:** Historical records vary in accuracy (especially pre-1990s), fire boundaries are approximations, casualty data compiled from multiple sources may be incomplete, and merged fires complicate individual attribution. This dashboard illuminates general trends, not forensic detail.
+
 </div>
