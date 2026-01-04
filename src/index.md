@@ -79,6 +79,10 @@ html`<p style="max-width: none;">Bushfires are an intrinsic part of the Australi
 ```
 
 ```js
+html`<p style="max-width: none;">The human toll of these fires is devastating. The deadliest NSW fires since 1970 include the <strong>Badja Forest Road fire</strong> (2019-2020) which claimed <span style="color: ${colors.wildfire}; font-weight: 600;">6 lives</span> including volunteer firefighter Colin Burns, and destroyed <strong>418 homes</strong> around Cobargo on New Year's Eve 2019. The <strong>Green Wattle Creek fire</strong> (2019) killed two volunteer firefighters—Geoffrey Keaton (32) and Andrew O'Dwyer (36)—when a tree struck their tanker, and nearly destroyed the village of Balmoral. Across the Black Summer fires, <strong>over 2,400 homes were destroyed</strong>, with many ignited by lightning strikes in remote, inaccessible bushland during unprecedented drought conditions.</p>`
+```
+
+```js
 html`<p style="max-width: none;">The data reveals a troubling pattern: <strong>the most destructive periods have all occurred since 2000</strong>. The 2015-2019 period saw the most area burnt, driven by Black Summer's trio of mega-fires. The 2000-2004 period ranks second with the 2003 Australian Alps fires burning <span style="color: ${colors.accent3}; font-weight: 600;">1.73 million hectares</span> during Australia's worst drought in 103 years.</p>`
 ```
 
@@ -90,19 +94,23 @@ html`<p style="max-width: none; margin-bottom: 2rem;">As climate change intensif
 html`<div class="grid grid-cols-4">
   <div class="card">
     <h2 style="font-weight: 700;">Total Fires</h2>
-    <span class="big">${totalFires.toLocaleString("en-US")}</span>
+    <span class="big" style="background: linear-gradient(135deg, ${colors.accent2} 0%, ${colors.prescribedBurn} 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">${totalFires.toLocaleString("en-US")}</span>
+    <div style="font-size: 0.85rem; margin-top: 0.25rem; font-weight: 600; background: linear-gradient(135deg, ${colors.accent2} 0%, ${colors.prescribedBurn} 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">⌕ ${Math.round(totalFires / 55).toLocaleString("en-US")} avg/year</div>
   </div>
   <div class="card">
     <h2 style="font-weight: 700;">Total Area Burnt</h2>
-    <span class="big">${d3.format(".2s")(totalAreaHa)}</span> hectares
+    <span class="big" style="color: ${colors.accent3};">${d3.format(".2s")(totalAreaHa)}</span> hectares
+    <div style="font-size: 0.85rem; margin-top: 0.25rem; font-weight: 600; color: ${colors.accent3};">≈ ${d3.format(".2f")((totalAreaHa / 769000000) * 100)}% of Australia</div>
   </div>
   <div class="card">
     <h2 style="font-weight: 700; color: ${colors.wildfire};">Wildfires</h2>
     <span class="big" style="color: ${colors.wildfire};">${wildfires.length.toLocaleString("en-US")}</span>
+    <div style="font-size: 0.85rem; margin-top: 0.25rem; font-weight: 600; color: ${colors.wildfire};">▲ ${d3.format(".2s")(d3.sum(wildfires, d => d.AreaHa))} hectares burnt</div>
   </div>
   <div class="card">
     <h2 style="font-weight: 700; color: ${colors.prescribedBurn};">Prescribed Burns</h2>
     <span class="big" style="color: ${colors.prescribedBurn};">${prescribedBurns.length.toLocaleString("en-US")}</span>
+    <div style="font-size: 0.85rem; margin-top: 0.25rem; font-weight: 600; color: ${colors.prescribedBurn};">◉ ${d3.format(".2s")(d3.sum(prescribedBurns, d => d.AreaHa))} hectares burnt</div>
   </div>
 </div>`
 ```
@@ -156,15 +164,15 @@ html`<div class="grid grid-cols-4">
   </div>
   <div class="card">
     <h2>When Do Mega-Fires Happen?</h2>
-    <h3>Only 87 fires since 1970 have exceeded 50,000 hectares. The Gospers Mountain fire traveled nearly 12km in less than 3 hours at peak intensity and merged with other blazes to exceed 1 million hectares.</h3>
+    <h3>Only 87 fires since 1970 have exceeded 50,000 hectares. Most occur in summer (Dec-Feb) when temperatures peak and fuel is driest. The worst fires exhibit extreme behavior: fire tornadoes, 60-meter flame heights, and runs of 80+ kilometers in a single day.</h3>
     ${resize((width) => bigFiresScatter(fires, {width}))}
   </div>
 </div>
 
-<div class="grid grid-cols-2" style="grid-auto-rows: 520px;">
+<div class="grid grid-cols-2">
   <div class="card">
     <h2>What Were the Largest Fires Ever Recorded?</h2>
-    <h3>The Gospers Mountain fire (2019) was the largest from a single ignition point in Australian history at 512,626 hectares. It generated pyrocumulonimbus clouds and merged with 5 other fires to create a megablaze exceeding 1 million hectares.</h3>
-    ${resize((width) => topLargestFires(fires, {width}))}
+    <h3>The top 10 fires by area reveal catastrophic human impacts. Dot size reflects combined severity from casualties, homes destroyed, area, and injuries. Nearly all sparked by lightning in remote bushland during extreme drought.</h3>
+    ${topLargestFires(fires, {width: 530, nswSuburbs})}
   </div>
 </div>

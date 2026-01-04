@@ -53,11 +53,11 @@ export function bigFiresScatter(
 
   const periodicLargest = [largest1970s, largest2000s, largest2019].filter(f => f !== null);
 
-  // Context for each fire
+  // Context for each fire with detailed impacts
   const fireContext: Record<string, string> = {
-    "1974-75 Wildfire": "Largest fire contained by humans in NSW",
-    "Kosciuszko (2003)": "During Australia's worst drought in 103 years",
-    "Gospers Mountain (2019)": "Largest fire from single ignition point in Australian history"
+    "1974-75 Wildfire": "6 deaths, 40 homes. Lightning strikes after heavy rainfall",
+    "Kosciuszko (2003)": "4 deaths, 551 homes. 44 fires from lightning storms",
+    "Gospers Mountain (2019)": "90 homes. Generated pyrocumulonimbus clouds"
   };
 
   return Plot.plot({
@@ -83,6 +83,7 @@ export function bigFiresScatter(
       range: [3, 25]
     },
     marks: [
+      // All regular fires in pink
       Plot.dot(chartData, {
         x: "month",
         y: "year",
@@ -91,6 +92,25 @@ export function bigFiresScatter(
         fillOpacity: 0.6,
         stroke: colors.wildfire,
         strokeOpacity: 0.8,
+        tip: {
+          format: {
+            x: false,
+            y: false,
+            r: false
+          }
+        },
+        title: (d: any) => `${d.name}\n${d.year}\nArea: ${d.areaHa.toLocaleString()} ha`
+      }),
+      // Highlighted fires in orange
+      Plot.dot(periodicLargest, {
+        x: "month",
+        y: "year",
+        r: "areaHa",
+        fill: colors.accent2,
+        fillOpacity: 0.9,
+        stroke: colors.accent2,
+        strokeWidth: 2,
+        strokeOpacity: 1,
         tip: {
           format: {
             x: false,
