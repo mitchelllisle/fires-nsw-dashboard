@@ -185,4 +185,6 @@ This dashboard is built for **educational purposes** to explore patterns in NSW 
 
 **Data Source:** [NSW DPIE Fire History - Wildfires and Prescribed Burns](https://datasets.seed.nsw.gov.au/dataset/fire-history-wildfires-and-prescribed-burns-1e8b6) dataset. **Limitations:** Historical records vary in accuracy (especially pre-1990s), fire boundaries are approximations, casualty data compiled from multiple sources may be incomplete, and merged fires complicate individual attribution. This dashboard illuminates general trends, not forensic detail.
 
+**Acknowledgments:** Several visualizations were inspired by [Salsa Digital's History of Bushfires in NSW](https://salsa.digital/insights/history-of-bushfires-in-nsw).
+
 </div>
