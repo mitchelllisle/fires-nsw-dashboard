@@ -169,11 +169,11 @@ html`<div class="grid grid-cols-4">
   </div>
 </div>
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-1">
   <div class="card">
     <h2>What Were the Largest Fires Ever Recorded?</h2>
     <h3>The top 10 fires by area reveal catastrophic human impacts. Dot size reflects combined severity from casualties, homes destroyed, area, and injuries. Nearly all sparked by lightning in remote bushland during extreme drought.</h3>
-    ${topLargestFires(fires, {width: 530, nswSuburbs})}
+    ${topLargestFires(fires, {width: 1100, nswSuburbs})}
   </div>
 </div>
 

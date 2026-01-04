@@ -163,9 +163,13 @@ export function topLargestFires(
   const criticalThreshold = minScore + (range * 0.66);
   const majorThreshold = minScore + (range * 0.33);
   
-  // Create container
+  // Create container with two-column layout
   const container = document.createElement("div");
-  container.style.cssText = `width: 100%; margin-top: 1.5rem;`;
+  container.style.cssText = `width: 100%; margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;`;
+  
+  // Create two columns
+  const column1 = document.createElement("div");
+  const column2 = document.createElement("div");
   
   uniqueFires.forEach((fire, i) => {
     const impactScore = fire.impactScore;
@@ -280,8 +284,16 @@ export function topLargestFires(
       entry.appendChild(mapContainer);
     }
     
-    container.appendChild(entry);
+    // Add to first column (0-4) or second column (5-9)
+    if (i < 5) {
+      column1.appendChild(entry);
+    } else {
+      column2.appendChild(entry);
+    }
   });
+  
+  container.appendChild(column1);
+  container.appendChild(column2);
   
   return container;
 }
